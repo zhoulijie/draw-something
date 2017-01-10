@@ -45,14 +45,15 @@ io.on('connection', function(socket) {
             KEYWORD = keyword[Math.floor(Math.random() * keyword.length)];
             socket.emit('keyword', KEYWORD);
         }else if(message == 'clear'){
-            socket.emit('showBoardClearArea');
+            // socket.emit('showBoardClearArea');
+            io.sockets.emit('showBoardClearArea')
         }
     });
 
     socket.on('disconnect', function() {});
 });
 
-server.listen(3000, 'localhost', function(err) {
+server.listen(3000, function(err) {
     if (err) {
         return console.log(err);
     }
