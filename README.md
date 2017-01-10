@@ -9,7 +9,7 @@
 具体可以参考官方，[Socket.io](https://github.com/socketio/socket.io);
 
 #### 2.Socket.io-client
-`index.html`中，我在开头引入了`./node_modules/socket.io-client/socket.io.js`,如果路径变更记得修改，主要是出于对socket.io的不熟悉，不知道怎么样在react中通过import方式去引入，有好的做法欢迎提出。
+`index.html`中，我在开头引入了`./node_modules/socket.io-client/dist/socket.io.js`,如果路径变更记得修改，主要是出于对socket.io的不熟悉，不知道怎么样在react中通过import方式去引入，有好的做法欢迎提出。
 
 #### 3.其他
 写在最后，还是那句，第1次接触Websocket，不知道`socket.io`有没有双向发送消息的机制，所以在`server.js`中你会看到来来回回了好几次。
@@ -36,7 +36,7 @@ io.on('connection', function(socket) {
             KEYWORD = keyword[Math.floor(Math.random() * keyword.length)];
             socket.emit('keyword', KEYWORD);
         }else if(message == 'clear'){
-            socket.emit('showBoardClearArea');
+            io.socket.emit('showBoardClearArea');
         }
     });
 
